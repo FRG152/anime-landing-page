@@ -3,14 +3,14 @@ import gsap from "gsap";
 import { onMounted } from "vue";
 
 onMounted(() => {
-  document.addEventListener("scroll", () => {
-    if (window.scrollY > 150) {
-      gsap.to("#navbar", { duration: 1, top: "20px" });
-    }
-    if (window.scrollY === 0) {
-      gsap.to("#navbar", { duration: 1, top: "-100px" });
-    }
-  });
+  // document.addEventListener("scroll", () => {
+  //   if (window.scrollY > 150) {
+  //     gsap.to("#navbar", { duration: 1, top: "20px" });
+  //   }
+  //   if (window.scrollY === 0) {
+  //     gsap.to("#navbar", { duration: 1, top: "-100px" });
+  //   }
+  // });
 });
 </script>
 
@@ -31,7 +31,7 @@ onMounted(() => {
 
 <style module>
 .container_navbar {
-  top: -100px;
+  top: 20px;
   left: 0;
   right: 0;
   display: flex;
@@ -44,7 +44,17 @@ onMounted(() => {
   z-index: 100;
   margin: auto;
   height: 60px;
-  width: 95%;
+  width: 97%;
+}
+.container_navbar::after {
+  content: "";
+  left: 0;
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px 0 0 10px;
+  background-color: #fff;
+  clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
 }
 .nav_links {
   color: #fff;
@@ -53,6 +63,7 @@ onMounted(() => {
   align-items: center;
 }
 .nav_logo {
-  color: #fff;
+  color: #000;
+  z-index: 50;
 }
 </style>
