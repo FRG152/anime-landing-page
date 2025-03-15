@@ -12,15 +12,16 @@ onMounted(() => {
   const clipAnimation = gsap.timeline({
     scrollTrigger: {
       trigger: "#container_anime",
-      start: "center center",
+      start: "top top",
       end: "center",
-      scrub: 5,
+      scrub: 1,
       pin: true,
     },
   });
   clipAnimation
     .to("#anime_title", {
       duration: 5,
+      opacity: 1,
       right: 0,
     })
     .to("#anime_desc", {
@@ -44,6 +45,17 @@ onMounted(() => {
       width: "0%",
       height: "100%",
       opacity: 0,
+    })
+    .to("#anime_video_02", {
+      duration: 5,
+      width: "0%",
+      height: "100%",
+      opacity: 1,
+    })
+    .to("#anime_video_03", {
+      duration: 5,
+      width: "100%",
+      height: "100%",
     });
 });
 </script>
@@ -62,6 +74,14 @@ onMounted(() => {
       <video
         id="anime_video_02"
         src="/public/videos/clip_02.mp4"
+        loop
+        muted
+        autoplay
+        :class="$style.anime_video"
+      />
+      <video
+        id="anime_video_03"
+        src="/public/videos/clip_03.mp4"
         loop
         muted
         autoplay
@@ -112,22 +132,12 @@ onMounted(() => {
   max-width: 350px;
   font-size: 2rem;
 }
-.anime_desc::before {
-  content: "";
-  top: 0;
-  left: 20px;
-  bottom: 0;
-  position: fixed;
-  background-color: #dddddd;
-  margin: auto;
-  height: 95%;
-  width: 1px;
-}
 .anime_title {
   color: #ffffff;
   top: 0;
-  right: 40%;
+  right: 50%;
   bottom: 0;
+  opacity: 0;
   display: flex;
   position: absolute;
   align-items: center;

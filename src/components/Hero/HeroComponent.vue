@@ -6,150 +6,159 @@ import gsap from "gsap";
 import { onMounted } from "vue";
 
 onMounted(() => {
+  // const timeLine = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: "#container_hero",
+  //     pin: true,
+  //     scrub: 1,
+  //     start: "end end",
+  //   },
+  // });
   gsap.fromTo(
-    "#box_line_top",
+    "#hero_title",
     {
-      duration: 2,
-      width: "0%",
+      duration: 6,
+      opacity: 0,
     },
     {
-      duration: 2,
-      width: "95%",
+      duration: 6,
+      opacity: 1,
+    }
+  );
+  gsap.fromTo(
+    "#hero_desc",
+    {
+      duration: 5,
+      opacity: 0,
+    },
+    {
+      duration: 5,
+      opacity: 1,
+    }
+  );
+  gsap.fromTo(
+    "#hero_button",
+    {
+      duration: 7,
+      opacity: 0,
+    },
+    {
+      duration: 7,
+      opacity: 1,
     }
   );
 });
 </script>
 
 <template>
-  <section :class="$style.container_hero">
-    <div id="box_line_top" :class="$style.box_line_top">
-      <h3 :class="$style.logo">AP</h3>
-      <div :class="$style.line_top" />
-    </div>
-    <div id="box_line_bottom" :class="$style.box_line_bottom">
-      <div :class="$style.line_bottom" />
-      <div :class="$style.social_media">
-        <div
-          class="pi pi-twitter"
-          style="color: #fff; cursor: pointer; font-size: 1.5rem"
-        />
-        <div
-          class="pi pi-facebook"
-          style="color: #fff; cursor: pointer; font-size: 1.5rem"
-        />
-        <div
-          class="pi pi-instagram"
-          style="color: #fff; cursor: pointer; font-size: 1.5rem"
-        />
-      </div>
-    </div>
-    <h1 :class="$style.hero_title">ANIME PORTAL</h1>
-    <p :class="$style.hero_desc">
+  <section id="container_hero" :class="$style.container_hero">
+    <!-- <div :class="$style.grid_01"> -->
+    <h1 id="hero_title" :class="$style.hero_title">ANIME PORTAL</h1>
+    <p id="hero_desc" :class="$style.hero_desc">
       Discover, Explore, and Immerse <br />
       Yourself in the World of Anime
     </p>
-    <button :class="$style.hero_button">More</button>
+    <button id="hero_button" :class="$style.hero_button">
+      <p>See More</p>
+      <div class="pi pi-arrow-down" />
+    </button>
+    <!-- <video
+        id="anime_video_01"
+        src="/public/videos/clip_01.mp4"
+        loop
+        muted
+        autoplay
+        :class="$style.anime_video"
+      /> -->
+    <!-- </div> -->
+    <!-- <div :class="$style.grid_02"> -->
+
+    <!-- <img
+        :class="$style.hero_bg"
+        src="/public/image/image.png"
+        alt=""
+        srcset=""
+      /> -->
+    <!-- </div> -->
   </section>
 </template>
 
 <style module>
 .container_hero {
-  display: flex;
+  /* display: grid; */
+  overflow: hidden;
   position: relative;
   min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  background-size: cover;
-  background-image: url("/public/image/hero_bg.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* grid-template-columns: 80% 20%; */
 }
-.container_hero::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 200px;
-  z-index: 0;
-  background-color: #000000;
-  content: "";
+.grid_01 {
+  position: relative;
 }
-.container_hero::after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  bottom: 0;
-  height: 200px;
-  z-index: 0;
-  background-color: #000000;
-  content: "";
-}
-.box_line_top {
-  top: 75px;
-  left: 0;
-  right: 0;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  column-gap: 20px;
-  z-index: 100;
-  margin: auto;
-  width: 95%;
-}
-.line_top {
-  width: 100%;
-  height: 1px;
-  background-color: #ffffff;
-}
-.logo {
-  color: #ffff;
-  font-size: 2rem;
-}
-.box_line_bottom {
-  left: 0;
-  right: 0;
-  bottom: 75px;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  column-gap: 20px;
-  z-index: 100;
-  margin: auto;
-  width: 95%;
-}
-.line_bottom {
-  width: 100%;
-  height: 1px;
-  background-color: #ffffff;
+.grid_02 {
+  position: relative;
+  background-color: #fff;
 }
 .social_media {
   display: flex;
   column-gap: 15px;
 }
 .hero_title {
-  color: #ffff;
-  z-index: 10;
-  font-size: 8rem;
+  top: 0px;
+  left: 20px;
+  color: #fff;
+  display: flex;
+  position: absolute;
+  font-size: 5rem;
+  text-align: center;
   font-weight: 600;
+  align-items: center;
+  z-index: 10;
 }
 .hero_desc {
-  color: #ffff;
-  z-index: 10;
+  color: #fff;
+  /* top: 0; */
+  /* right: 20px; */
+  /* bottom: 100px; */
+  /* position: absolute; */
+  text-align: center;
   font-size: 2rem;
+  z-index: 10;
 }
 .hero_button {
-  width: 120px;
+  width: 160px;
   height: 50px;
-  z-index: 10;
+  padding: 0 20px;
+  display: flex;
   font-size: 1rem;
-  margin-top: 20px;
-  border-radius: 20px;
-  background-color: #ffffff;
-  transition: 1s all;
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  z-index: 10;
+  bottom: 20px;
+  right: 20px;
+}
+.hero_button > p {
+  font-weight: 300;
+}
+.hero_bg {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+  position: absolute;
+  object-fit: contain;
+  margin: auto;
+}
+.anime_video {
+  width: 100%;
+  height: 70%;
+  margin: auto;
+  position: absolute;
+  align-self: center;
+  object-fit: cover;
+  align-items: center;
+  bottom: 0;
+  top: 0;
 }
 </style>
